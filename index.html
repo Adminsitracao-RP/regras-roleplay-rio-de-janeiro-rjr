@@ -1,288 +1,524 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rio de Janeiro RP | Cânones Roleplay</title>
-    <style>
-        .img-center {
-            display: block;
-            margin: 0 auto;
-            width: 15%;
-            height: auto;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regras RP | Rio de Janeiro</title>
+  <link rel="icon" href="bandeirarj.png" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .giroflex {
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-            animation: piscar 0.5s infinite alternate;
-        }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      height: 100vh;
+      background: linear-gradient(to right, #e0f0ff, #f0f8ff);
+      overflow: hidden;
+    }
 
-        @keyframes piscar {
-            0%   { color: rgb(221, 174, 174); }
-            50%  { color: rgb(38, 125, 240); }
-            100% { color: rgb(221, 174, 174); }
-        }
-    </style>
+    .sidebar {
+      width: 260px;
+      background: linear-gradient(180deg, #003366, #001f3f);
+      color: white;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #00507a;
+      padding-bottom: 10px;
+    }
+
+    .sidebar button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      text-align: left;
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .sidebar button:hover,
+    .sidebar button.active {
+      background-color: rgba(0, 183, 255, 0.2);
+      transform: translateX(5px);
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background-color: #ffffff;
+      position: relative;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section h2 {
+      color: #003366;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #cce;
+      padding-bottom: 5px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+    }
+
+    .section ul li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    .logo-top {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-top img {
+      width: 80px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    .sidebar {
+  width: 260px;
+  height: 100vh; /* altura total da tela */
+  overflow-y: auto; /* ativa rolagem apenas na sidebar */
+  background: linear-gradient(180deg, #003366, #001f3f);
+  color: white;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+  </style>
 </head>
-<img class="img-center" src="ceoaa.png" alt="Logo">
+<body >
 
-<p class="giroflex">
-     <strong>RIO DE JANEIRO ROLEPLAY <br>
-     LEGISLAÇÃO RIO DE JANEIRO - RJR<br>
-     Desenvolvido por LipeDEV</strong>
-     <hr>
-</p>
+  <div class="sidebar">
+    <div class="logo-top">
+      <img src="rjlogob.png" alt="Logo RP RJ" />
+    </div>
+    <h2>📖 REGRAS RP RJ</h2>
+    <button onclick="showSection('gerais')" class="active">📌 Regras do Roleplay</button>
+    <button onclick="showSection('organizações')">🏯 Regras Polícia/Facções</button>
+    <button onclick="showSection('conceitos')">📚 Regras Institucionais da Polícia</button>
+    <button onclick="showSection('discord')">💬 Regras Discord</button>
+    <button onclick="showSection('acao')">⚔️ Regras de Ação</button>
+    <button onclick="showSection('safe')">🟢 Safe Zones</button>
+    <button onclick="showSection('economia')">💰 Regras da Economia</button>
+    <button onclick="showSection('exoticos')">🚖 Veículos Exóticos</button>
+    <button onclick="showSection('penalidades')">⚖️ Penalidades</button>
+  </div>
 
-<body>
-    <br>
-    <br>
-    <br>
-    <p style="text-align: center;">TÍTULO II <br>
-        REGRAS DE RP
-     </p>
-     <p>◽ <strong>⚖️ Art. 1º - Amor á Vida  <br> </strong>
-         •	➥ Significa que o jogador deve valorizar a vida no jogo como se fosse única, e não se colocar em situações com risco de morte. <br>
-         <strong> Palágrafo único</strong> - Em casos do anti amor á vida, acarretará no banimento permanente do infrator.
-        </p>
-        <br>
-        <p>◽ <strong>⚖️ Art. 2º - Car Parking </strong> <br>
-             •	➥ É manter algum veículo estacionado em cima de outro jogador propositalmente.<br>
-            
-             </p>
-             <br>
-     <p>◽ <strong>⚖️ Art. 3º - Combat logging </strong> <br>
-         •	➥ É o ato de desconectar ou respawnar intencionalmente do jogo durante o RP. <br>
-
-       </p>
-       <br>
-     <p>◽ <strong>⚖️ Art. 4º - Meta gaming </strong> <br>
-         •	➥ É você utilizar informações obtidas fora do jogo e utilizá-las dentro. <br>
-         
-         
-        </p>
-        <br>
-     <p>◽   <strong>⚖️ Art. 5º - RDM E VDM </strong> <br>
-         •	➥ Ambas as siglas são modalidades de Deathmatch (matar), ou seja, matança em geral. <br>
-         <br>
-         VDM (vehicle deathmatch) é utilização do veículo como arma, e realizar atropelamentos. A prática do VDM é proibida mesmo em situações de legítima defesa. <br>
-         <br>
-         RDM (random deathmatch) é a morte de alguém sem motivo, seja simplesmente pelo desejo de matar ou por ódio. O motivo deve ser claro dentro do RP, o jogador deverá estar ciente que corre risco de vida, como em assaltos por exemplo. <br>
-         
-        </p>
-        <br>
-     <p>◽ <strong>⚖️ Art. 6º - ANTI RP E FORÇAR RP </strong> <br>
-         •	➥ É criar situações ou meios de se matar, colisão proposital com veículos, atrapalhar o trabalho de policiais e médicos durantes atendimentos, atrapalhar interações sem ter o objetivo de enriquecer o RP. É basicamente sair do seu personagem e forçar com que os outros façam o mesmo. <br>
-
-        </p>
-        <br>
-     <p>◽ <strong>⚖️ Art. 7º - Flaming </strong> <br>
-         •	➥ É o ato de inflamar alguma situação ou pessoa de forma negativa, incitando o ódio, acusações, ofensas, ameaças. Contra algo ou alguém. <br>
-         <strong>Parágrafo único </strong> - Este artigo serve tanto para dentro do RP (erlc) quando para o próprio discord.
-        </p>
-        <br>
-     <p>◽  <strong>⚖️ Art. 8º - Abuso de Bug  <br> </strong>
-         •	➥ É se aproveitar de qualquer bug presente na cidade para obter vantagem, se beneficiar do abuso de bugs praticado por outros jogadores.<br>
-         
-        </p>
-        <br>
-     <p>◽  <strong>⚖️ Art. 9º - Esquecer </strong> <br>
-         •	➥ Sempre que for assassinado dentro do jogo é necessário esquecer toda a ação até sua morte. <br>
-         
-        </p>
-
-        <br>
-     <p>◽  <strong>⚖️ Art. 10º - Falar durante Morte </strong> <br>
-         •	➥ Caso esteja em coma é extremamente proibido falar desmaiado ou finalizado (Anti-RP). <br>
-         
-        </p>
-        <br>
-     <p>◽   <strong>*⚖️ Art. 11º - Chamada Fakes</strong> <br>
-         •	➥ É proibido fazer chamado FAKE para qualquer órgão governamental.<br>
-         
-        </p>
-        <br>
-     <p>◽ <strong> ⚖️ Art. 12º  - Correr para safe </strong> <br>
-         •	➥ Correr para a área Safe enquanto estiver em ação, a ação continuará dentro da safe. <br>
-         
-        </p>
-        <br>
-     <p>◽ <strong> ⚖️ Art. 13º - óbito </strong> <br>
-        • ➥  Somente socorristas podem dar o diagnóstico de finalizado ou óbito. <br>
-         
-        </p>
-        <br>
-     <p>◽ <strong>⚖️ Art. 14º - Interação</strong> <br>
-        • ➥ Não é permitido atrapalhar a interação do médico, mecânico ou policial com outro jogador, mesmo que seu caso seja mais urgente. <br>
-       </p>
-       <br>
-     <p>◽ <strong> ⚖️ Art. 15º - Emboscada</strong><br>
-        • ➥ Proibido anunciar serviço de Facção/Organização para fazer emboscada.</p>
-        <br>
-     <p>◽ <strong>⚖️ Art. 16º Disparos</strong> <br>
-        • ➥ Proibido fazer disparos apenas para chamar atenção da polícia.</p>
-        <br>
-     <p>◽ <strong>⚖️ Art. 17º - Safe teams</strong> <br>
-        • ➥ Os safes teams são os times onde está proibido qualquer ação ilegal com eles, sendo eles:
-         <br>
-        • ➥ Corpo de Bombeiros Militares <br>
-        • ➥ SAMU</p>
-        <br>
-        <p><s>◽ <strong> ⚖️ Art. 18º - Respawn</strong> <br>
-            • ➥ O respawn após a morte, só poderá ser realizado após o tempo estimado pela equipe CEO, sendo eles:
-             <br>
-            • ➥ Sem CBM ou/ SAMU em serviço, aguarde 3 minutos; <br>
-            • ➥ Com CBM ou/ SAMU em serviço, aguarda 5 minutos.</s></p> 
-            <br>
-     <p>◽ <strong> ⚖️ Art. 18º - Respawn</strong> <br>
-        • ➥ O respawn após a morte, só poderá ser realizado após o tempo estimado pela equipe CEO, sendo eles:
-        <br>
-        • ➥ Sem CBM ou/ SAMU em serviço, aguarde 4 minutos; <br>
-        • ➥ Com CBM ou/ SAMU em serviço, aguarda 9 minutos.<br>
-        <br>
-        <strong>Parágrafo único</strong> - Essa regra só se aplica se não tiver RP ativo com você morto, como de exemplo, RP ativo com a PM, PC ou Perito/IML.
-     </p>
-        <br>
-     <p>◽ <strong> ⚖️ Art. 19º CRp - Polícia </strong> <br>
-        • ➥ A Polícia não pode ser Corrupta, se descoberto e denunciado, será banido. <br>
-         <br>
-        • ➥ A fuga é sempre limpa, exceto em casos que o suspeito ofereça risco para os civis.<br>
-         <br>
-        • ➥ Não se pode atrapalhar a interação da Polícia com outros cidadãos, sujeito a penalidades dentro da Cidade. <br>
-         <br>
-        • ➥ Proibido interação com corpo (Dark-RP)
-         <br>
-        Ex.: Varrer, xingar, dançar, tirar selfie e afins com o corpo.<br>
-         <br>
-        • ➥ É proibido saquear policiais. <br>
-         <br>
-        • ➥ Trate os policiais da forma que você trataria na vida real, não provoque eles, não xingue eles, trate sempre com respeito. <br>
-         <br>
-        • ➥ Disparo de arma de fogo em perseguição só é autorizado caso os bandidos abrem fogo contra civis ou a VTR. (o abuso dessa regras pode gerar punições, forçar escapada, empurrar veículo contra viatura, continuar fuga após vários acidentes ou batidas). <br>
-         <br>
-        • ➥ É extremamente proibido usar máscaras ou tatuagens que cobrem a identidade estando em serviço, apenas a Polícia Civil e a Polícia Federal está autorizada a usar a máscara. <br>
-         <br>
-        • ➥  Apenas policial mulher pode revistar uma mulher, mas os policiais podem pedir e em caso de recusa encaminhar a cidadã para delegacia e pedir para colocar seus itens em uma caixa. <br>
-         <br>
-        • ➥ Está liberado é somente pegar propina, porém se for descoberto no rp será exonerado. <br>
-         <br>
-        • ➥ Os policiais da Polícia Civil podem usar viatura da Corporação à paisana para fins de investigação e coleta de provas. 
-        (Excepcionalmente nessas situações é permitido o uso individual da viatura) <br>
-         <br>
-        <strong>ATENÇÃO:</strong> As regras internas de uma Corporação Policial são definidas por seus Superiores, e a Prefeitura não interfere ou altera as mesmas diretamente.</p>
-        <br>
-    <p>◽ <strong>⚖️  Art. 20º - Facções </strong> <br>
-        • ➥ Membros que queiram sair deverão ser mortos para não se lembrarem da sua vida ali dentro. <br>
-         <br>
-        • ➥ Forçar ações contra Policia é passível de punição. <br>
-         <br>
-        • ➥ Cada FAC/ORGs poderão invadir o rival 1 vez dentro do prazo de 7 dias, a invasão deverá ser registrada na call criada no discord da fac / Org para controle ao fim da ação. <br>
-         <br>
-        • ➥ Proibido união de Facs e Orgs ilegais para realizar qualquer tipo de ação, salvo que só é permitido união de não rivais para Roubo a Bancos / Joalheria / Defender a Favela. <br>
-         <br>
-        • ➥ Proibido união com civis para qualquer tipo de ação. <br>
-         <br>
-        • ➥ Extremamente proibido fazer chamados fakes Policial/Samu/CBM, para fazer ação com os mesmos. <br>
-         <br>
-        • ➥ Matar um policial pelo simples fato dele tentar te abordar é proibido(Somente abordagem de rotina que não é feita a revista íntima). <br>
-         <br>
-        • ➥ Caso um membro queira sair ou seja removido da facção (todas), o mesmo deverá ser finalizado, caso não seja possível a finalização do mesmo ele é obrigado a esquecer as informações e tudo oque viveu na facção. <br>
-         <br>
-        • ➥ Proibido entrar no território de outras facções para forçar PVP. </p>
-
-
-     <p>◽ <strong> ⚖️ Art. 21º - Makewanted </strong> <br>
-        • ➥ㅤVocê DEVE usar o comando 'makewanted' sempre que estiver fugindo da polícia ou sendo abordado. Certifique-se de manter seu nível de procurado enquanto estiver em fuga. Esse comando te dá estrelas de procurado, permitindo que a polícia fure seus pneus e chame um helicóptero para a perseguição</p>
+  <div class="main-content">
+    <div id="gerais" class="section active">
+      <h2>📌 Regras do Roleplay</h2>
+      <ul>
+        <li>O jogador deve zelar por sua integridade física dentro do RP, evitando expor-se intencionalmente a situações que coloquem sua vida em risco.
+          Parágrafo único: O descumprimento desta norma acarretará em banimento permanente.</li>
+        <li>É vedado estacionar propositalmente qualquer veículo sobre outro jogador, com o intuito de prejudicá-lo.</li>
+        <li>É proibido desconectar-se ou respawnar com o intuito de evitar as consequências de uma ação em andamento.</li>
+        <li>É expressamente proibido utilizar informações obtidas fora do ambiente do RP (como transmissões ao vivo, chamadas, Discord, etc.) para benefício próprio dentro do jogo.</li>
+        <li>RDM (Random Deathmatch): Eliminar outro jogador sem motivação justificada no RP.
 <br>
-     <p>◽ <strong>⚖️ Art. 22º - Skins Realistas </strong><br>
-        • ➥ Sua skin deve ser realista e condizer com a aparência humana. Não use acessórios irreais ou que não existam na vida real. A skin deve conter:<br>
-        ﾠ  <br>
-        • ➥ Cor de pele humana. <br>
-        • ➥ Partes do corpo humano (modelo quadrado).<br>
-        ﾠ  <br>
-        ﾠ Proibições: <br>
-        • ➥ Avatares Rthro. <br>
-        • ➥ Itens mágicos, asas ou qualquer ou qualquer outro item fantasioso.</p>
-     <br>
-     <p>◽ <strong> ⚖️ﾠ Art. 23º - Falar OFF-Roleplay </strong> <br>
-        • ➥ Falar em OFF-Roleplay é quando um jogador quer conversar com outro fora do contexto do jogo. Para isso, é necessário usar os seguintes caracteres:<br>
-       <br>
-        • ➥ (Assunto)<br>
-        • ➥ ((Assunto))<br>
-        • ➥ [Assunto]<br>
-        • ➥ [[Assunto]]<br>
-        <br>
-          A) Se o OFF-Roleplay não usar nenhum desses caracteres, pode resultar em advertência. <br>
-         <br>
-         B) É proibido usar OFF-Roleplay para tratar de assuntos ou respostas que deveriam acontecer dentro do RP.<br>
-    </p>
-     <br>
-     <p>◽ <strong>⚖️  Art. 24º - Dark RP</strong> <br>
-        • ➥ Dark RP é um roleplay onde tenha assédio, estupro, racismo, xenofobia, homofobia e etc. É totalmente proibido a realização do mesmo independente do caso.<br>
-    <strong>Palágrafo único - qualquer quebra desta regra, ocasionará banimento permanente.</strong></p>
-        <br>
-     <p>◽<strong> ⚖️  Art. 25º - Voltar Ação</strong> <br>
-        • ➥ Está proibido a volta das ações após sua morte, mesmo que volte com personagem secundário ou terciário.</p>
-        <br>
-     <p>◽ <strong>⚖️ Art. 26º - Reconhecer STAFF ou CEO</strong><br>
-        • ➥ Está totalmente proibido reconhecer algum membro da equipe administrativa só por causa o seu nick, só aplica-se a exceção em casos de você já tiver contato com o personagem do STAFF dentro do próprio RP.</p>
-        <br>
-     <p>◽<strong> ⚖️  Art. 27º - Drift</strong><br>
-        • ➥ Está proibido a prática de drifts durante as fugas, devido as viaturas policiais não conseguirem realizar as manobras.</p>
-        <br>
-    <p>◽ <strong>⚖️ Art. 28º - Reconhecimento mascarado</strong> <br>
-        • ➥ Está proibido reconhecer alguém, que esteja com alguma coisa tampando a face da mesma, sendo através de Bala clavas, mascara cirúrgica, mascaras variadas e entre outros acessório.</p>
-        <br>
-    <p>◽<strong> ⚖️ Art. 29º - Quebra de Facção</strong><br>
-        • ➥ Apenas a Polícia Civil ou/ Polícia Federal tem autoridade para quebrar uma organização criminosa, ou seja, dar PD na facção inteira.</p>
-        <br>
-    <p>◽ <strong>⚖️ Art. 30º PVP Player</strong><br>
-        • ➥ O PVP Player é o ato dos jogadores fazerem apenas ações que envolvam tiro, sem gerar outros tipos de roleplay sem envolver tiroteios.</p>
-        <br>
-        <p>◽ <strong>⚖️ Art. 31º - Seração de instituições</strong><br>
-           ➡︎ Por liberação por parte da Equipe C.E.O, todos os jogadores da comunidade poderão está em mais de uma organização, desde que sigam e respeitem quantos personagens todos os jogadores tem, membros comuns podem ter apenas 2 (dois) personagens, já os membros que tem a tag apoiador, poderão ter 3 (três) personagens. Caso tiver um personagem só, que atua em duas ou mais organizações, caberá penalidade por parte da Equipe-STAFF.<br>
-            <br>
-            <br>
-           𝐎𝐑𝐆𝐀𝐍𝐈𝐙𝐀𝐂̧𝐎̃𝐄𝐒 𝐏𝐑𝐈𝐌𝐀́𝐑𝐈𝐀𝐒<br>
-           <br>
-           ➡︎ <img src="https://cdn.discordapp.com/emojis/1280163685691691108.png" alt="emoji" style="width: 22px; height: 15px;"> | Polícia Militar do Estado do Rio de Janeiro<br>
-           ➡︎ <img src="https://cdn.discordapp.com/emojis/1241896565854044271.png" alt="emoji" style="width: 22px; height: 15px;"> | Polícia Rodoviária Federal<br>
-             <br>
-             <br>
-           𝐎𝐑𝐆𝐀𝐍𝐈𝐙𝐀𝐂̧𝐎̃𝐄𝐒 𝐒𝐄𝐂𝐔𝐍𝐃𝐀́𝐑𝐈𝐀𝐒<br>
-           ➡︎ <img src="https://cdn.discordapp.com/emojis/1280163927082274867.png" alt="emoji" style="width: 22px; height: 15px;"> | Polícia Civil do Estado do Rio de Janeiro<br>
-           ➡︎ <img src="https://cdn.discordapp.com/emojis/1225636126627201094.png" alt="emoji" style="width: 22px; height: 15px;"> | Guarda Civil Municipal<br>
-            <br>
-             <br>
-           𝐎𝐑𝐆𝐀𝐍𝐈𝐙𝐀𝐂̧𝐎̃𝐄𝐒 𝐓𝐄𝐑𝐂𝐄𝐈𝐀́𝐑𝐈𝐀𝐒<br>
-           ➡︎ <img src="https://cdn.discordapp.com/emojis/1248618403015688243.png" alt="emoji" style="width: 22px; height: 15px;"> | Polícia Federal<br>
-           ➡︎ <img src="https://cdn.discordapp.com/emojis/1280164034817163395.png" alt="emoji" style="width: 22px; height: 15px;"> | Corpo de Bombeiros do Estado do Rio de Janeiro<br>
-           ➡︎ 👤 | Facções</p>
-           <br>
-           <p>➡︎ <strong>⚖️ Art. 32º - OFF-RP no ERLC:</strong><br> OFF-RP no ERLC:
-              Por requisição da Equipe Legisladora, dentro do Roleplay no ERLC, não a nenhum lugar que está sobre o evento "OFF-RP", há apenas 2 (duas) situações em uma região que poderá está sobre OFF-RP. Sendo:<br>
-               <br>
-              A) Eventos realizados pela Equipe STAFF ou pela Equipe Legisladora, desde que seja um evento para toda a comunidade, e não para um grupo social ou ético;<br>
-               <br>
-              B) Em intervenções diretas por parte de um membro da Equipe STAFF, geralmente ocorre quando um STAFF é solicitado através pelo !Mod ou qualquer meio de solicitação de um administrador.<br>
-               <br>
-              ➡︎ OFF-RP no Discord:
-              Por requisição da Equipe Legisladora, apenas alguns canais serão considerados OFF-RP, ou seja, tudo que for postado nele, tendo ligação direta ou indireta, deverá ser ignorado. Sendo eles:<br>
-               <br>
-              ➥ ⁠💬・chat-geral<br>
-              ➥ ⁠📷・mídias<br>
-              ➥ ⁠😂・perolas<br>
-              ➥ ⁠🖼・galerias<br>
-              ➥ ⁠💡・sugestões<br>
-              ➥ ⁠❓・dúvidas<br>
-              ➥ ⁠🤖・bots<br>
-              ➥ ⁠💬・chat-orgs<br>
-              ➥ ⁠💬・chat-facs<br>
-              ➥ ⁠💬・chat-vip<br>
-              ➥ ⁠👀・spoilers</p>
-              ⬅️ <a href="https://adminsitracao-rp.github.io/menu-regras-rio-de-janeiro-rjr/">Voltar</a> 
-<hr>
-<hr>
+          VDM (Vehicle Deathmatch): Utilizar veículos como arma, inclusive em situações de legítima defesa. Ambas as práticas são proibidas.</li>
+        <li>É vedada a criação de situações irreais ou forçadas que obriguem outros jogadores a agirem fora de seus papéis, como provocar colisões intencionais, interferir em atendimentos médicos ou policiais sem justificativa plausível.</li>
+        <li>É proibido inflamar discussões com atitudes hostis, ofensas, ameaças ou provocações dentro ou fora do RP.
+          Parágrafo único: Esta norma se aplica tanto ao ambiente do jogo quanto aos servidores Discord relacionados.</li>
+        <li>É vedada a utilização ou aproveitamento intencional de falhas no sistema para obtenção de vantagens, inclusive beneficiando-se de bugs explorados por terceiros.</li>
+        <li>Após ser morto no RP, o jogador deve esquecer completamente os acontecimentos que levaram ao óbito.</li>
+        <li>Durante estado de coma ou após finalização, é proibida qualquer manifestação verbal ou comunicação, por configurar Anti-RP.</li>
+        <li>É proibido realizar chamadas falsas para órgãos públicos ou de emergência com o intuito de enganar ou iniciar ações indevidas.</li>
+        <li>Refugiar-se em áreas classificadas como “Safe Zone” durante confrontos não encerra a ação, que continua válida dentro da área.</li>
+        <li>Somente membros do serviço de emergência devidamente designados (SAMU/CBM) têm autorização para declarar o óbito de um indivíduo.</li>
+        <li>É vedado interferir em atendimentos realizados por médicos, mecânicos ou policiais, mesmo diante de casos considerados urgentes.</li>
+        <li>É proibido disfarçar ações criminosas como chamadas de facção ou organização, com o objetivo de realizar emboscadas.</li>
+        <li>Não é permitido realizar disparos com o objetivo exclusivo de atrair a atenção das forças policiais.</li>
+        <li>É proibida qualquer ação ilegal contra:<br>
+          Corpo de Bombeiros Militares<br>
+          SAMU</li>
+        <li>O respawn somente poderá ocorrer após os seguintes prazos:<br>
+          Sem presença de CBM/SAMU: aguarde 4 minutos.<br>
+          Com presença de CBM/SAMU: aguarde 9 minutos.<br>
+          Parágrafo único: Esta regra não se aplica em caso de RP ativo com sua morte (ex: perícia ou abordagem policial).</li>
+        <li>Durante fuga ou abordagem policial, o jogador deve utilizar o comando /makewanted, que ativa o sistema de procurado, autorizando perseguições e uso de força tática pela polícia.</li>
+        <li>O avatar deve manter aparência humana realista, com:<br>
+          Pele e corpo humanizados (modelo quadrado).<br>
+          Proibições:     
+          Skins do tipo Rthro, asas, itens mágicos ou irreais.</li>
+        <li>É permitida comunicação fora do RP apenas com uso de: (mensagem), ((mensagem)), [mensagem] ou [[mensagem]].<br>
+          A) A ausência desses sinais pode gerar advertência.<br>
+          B) Não se deve utilizar Off-RP para decisões ou respostas que pertencem ao RP.</li>
+        <li>Qualquer conteúdo que envolva temas como assédio, estupro, racismo, homofobia, xenofobia ou similares será punido com banimento permanente.<br>
+          Parágrafo único: A tolerância é zero, independentemente da situação.</li>
+        <li>É proibido retomar qualquer ação ou vingança após a própria morte, mesmo utilizando outro personagem.</li>
+        <li>É proibido reconhecer membros da equipe administrativa apenas pelo nome ou nickname, salvo se houver histórico RP prévio com aquele personagem.</li>
+        <li>É proibida a realização de manobras de drift em perseguições, por comprometer a dinâmica das viaturas policiais.</li>
+        <li>Não se pode reconhecer ou afirmar a identidade de jogadores cuja face esteja encoberta por máscaras, balaclavas ou acessórios similares.</li>
+        <li>Somente a Polícia Civil e a Polícia Federal possuem autoridade para encerrar uma organização criminosa por completo.</li>
+        <li>A prática de realizar exclusivamente ações de tiroteio sem desenvolvimento narrativo do RP é proibida.</li>
+        <li>Todos os jogadores podem participar de até 2 (dois) organizações, desde que utilizem personagens distintos.<br>
+          Jogadores com a tag “Apoiador” podem possuir até 3 personagens.<br>
+          Personagem único em múltiplas organizações incorre em penalidade.<br>
+          Observação: Tal regulamentação é autorizada exclusivamente pela Equipe CEO.</li>
+      </ul>
+    </div>
+
+    <div id="organizações" class="section">
+      <h2>🏯 Regras Polícia/Facção</h2>
+      <ul>
+        <h3>Regras da Polícia</h3>
+        <li>A corrupção policial é proibida e punida com banimento.</li>
+        <li>Fugir é considerado limpo, salvo se houver risco a civis.</li>
+        <li>É vedado atrapalhar ações policiais com civis.</li>
+        <li>Interações com corpos são proibidas (Dark RP).</li>
+        <li>Os policiais devem ser tratados com respeito, como na vida real.</li>
+        <li>É proibido saquear policiais.</li>
+        <li>Só é permitido disparo policial se houver risco ou ataque prévio.</li>
+        <li>Máscaras são restritas à Polícia Civil e Federal.</li>
+        <li>Apenas policiais femininas podem revistar mulheres, salvo casos de recusa.</li>
+        <li>Propinas são toleradas no RP, mas, se descobertas, resultarão em exoneração.</li>
+        <li>Policiais Civis podem usar viaturas descaracterizadas em investigações.<br>
+          <strong>Atenção</strong>: As normas internas de cada corporação policial são definidas por seus superiores, com autonomia administrativa.</li><br>
+          <h3>Regras das Facções</h3>
+        <li>Membros que desejarem sair devem ser mortos (PD) em RP.<br>
+        Palagrafo único: A morte do personagem só terá o efeito do jogador esquecer tudo sobre a facção. Ele não perderá o personagem (banimento). </li>
+        <li>Forçar confrontos contra a polícia é proibido.</li>
+        <li>Facções podem invadir rivais apenas 1x por semana, com registro obrigatório.</li>
+        <li>É vedada aliança entre facções/organizações ilegais, exceto em ações específicas.</li>
+        <li>Alianças com civis são proibidas.</li>
+        <li>Falsas chamadas para ações são terminantemente proibidas.</li>
+        <li>Matar policiais durante abordagem de rotina é vedado. Com exceção da justa causa.</li>
+        <li>Informações obtidas em facção devem ser esquecidas se não houver finalização.</li>
+        <li>Entrar em territórios rivais com o objetivo exclusivo de iniciar PVP é proibido.</li>
+      </ul>
+    </div>
+
+
+    <div id="discord" class="section">
+      <h2>💬 Regras do Discord</h2>
+      <ul>
+        <li>É terminantemente proibido desrespeitar qualquer membro da comunidade, bem como integrantes da Equipe Administrativa, sob pena de sanções disciplinares.</li>
+        <li>É estritamente vedado o uso de nomes de usuário, apelidos ou avatares que contenham expressões ofensivas, obscenas ou com conotação sexual explícita, sob qualquer forma.</li>
+        <li>Não é permitida a divulgação, direta ou indireta, de outras comunidades, servidores, grupos ou plataformas que concorram com esta comunidade, sem autorização prévia da equipe gestora.</li>
+        <li>É vedado causar tumulto, desconforto ou interferência prejudicial à experiência de outros usuários em salas públicas de voz ou texto.</li>
+        <li>É proibido o uso de softwares ou dispositivos que alterem artificialmente a voz do usuário, de modo a dificultar a identificação, gerar desconforto ou comprometer a comunicação.</li>
+        <li>Gravações de voz ou áudio de outros usuários somente poderão ser realizadas mediante autorização expressa dos envolvidos ou com autorização prévia da Equipe Administrativa.</li>
+        <li>As salas de suporte devem ser utilizadas com responsabilidade e exclusivamente em situações que justifiquem sua necessidade. O uso indevido poderá resultar em advertência ou punição.</li>
+        <li>É terminantemente proibido qualquer ato ou manifestação de cunho racista, xenofóbico, homofóbico, transfóbico, pedófilo ou qualquer outra forma de preconceito ou intolerância.</li>
+        <li>Não é permitido o envio excessivo e repetitivo de mensagens (a partir de quatro mensagens consecutivas com conteúdo semelhante ou igual), caracterizando spam.</li>
+        <li>A marcação de membros da Equipe Staff, Legisladora ou Administrativa sem motivo justificável será considerada abuso de menção e poderá acarretar penalidade imediata.</li>
+        <li>A utilização de canais e chats específicos deve respeitar suas respectivas finalidades. O uso inadequado ou desvio de função dos canais poderá resultar em punição administrativa.</li>
+        <li>Por determinação da Equipe Legisladora, apenas os canais listados abaixo serão considerados estritamente OFF-RP. Isso significa que qualquer conteúdo publicado neles mesmo que possua vínculo direto ou indireto com ações do Roleplay não deverá ser considerado válido para uso dentro do RP, e deverá ser totalmente desconsiderado em investigações, interações ou construções narrativas:<br>
+
+          Canais classificados como OFF-RP:<br>
+          
+          💬・chat-geral<br>
+          
+          📷・mídias<br>
+          
+          😂・pérolas<br>
+          
+          🖼・galerias<br>
+          
+          💡・sugestões<br>
+          
+          ❓・dúvidas<br>
+          
+          🤖・bots<br>
+          
+          💬・chat-orgs<br>
+          
+          💬・chat-facs<br>
+          
+          💬・chat-vip<br>
+          
+          👀・spoilers<br>
+          
+          Parágrafo único: O uso de informações obtidas nestes canais dentro do Roleplay caracteriza infração de Metagaming, sujeita às penalidades previstas neste regulamento.</li>
+
+      </ul>
+    </div>
+
+    <div id="acao" class="section">
+      <h2>⚔️ Regras de Ações</h2>
+      <ul>
+        <li>As negociações entre criminosos e as forças policiais somente serão consideradas válidas mediante a presença de pelo menos um refém em poder dos criminosos.<br>
+          
+          § 1º – São permissíveis durante a negociação:<br>
+          
+          Solicitação de fuga limpa;<br>
+          
+          Redução da pena aplicada após prisão;<br>
+          
+          Devolução de itens pessoais mediante libertação do refém.<br>
+          
+          § 2º – Limites financeiros:<br>
+          
+          Valor máximo de dinheiro sujo em ações: R$ 2.500,00;<br>
+          
+          Valor máximo de dinheiro sujo em sequestros: R$ 5.850,00.<br>
+          
+          § 3º – Cada exigência feita deve estar vinculada a um refém específico.</li>
+        <li>O respawn do jogador somente poderá ocorrer após o óbito e mediante o cumprimento dos seguintes tempos de espera:<br>
+
+          4 minutos, caso não haja CBM ou SAMU em serviço;<br>
+          
+          9 minutos, caso haja CBM ou SAMU disponível em serviço.</li>
+        <li>É vedado inflamar situações, instigar conflitos, promover ofensas, ameaças, acusações infundadas ou qualquer manifestação hostil contra indivíduos ou organizações, seja verbalmente ou por atitudes provocativas.</li>
+        <li>Em caso de morte, o jogador deverá obrigatoriamente esquecer todos os eventos dos últimos 15 minutos, bem como todo o conteúdo narrativo da ação que culminou em seu óbito.</li>
+        <li>Somente profissionais médicos (SAMU ou CBM) têm a prerrogativa de declarar oficialmente a morte (óbito) de um indivíduo no Roleplay.</li>
+        <li>As ações a seguir deverão obedecer aos critérios mínimos obrigatórios quanto à quantidade de policiais e criminosos ativos no servidor no momento da execução:</li>
+        <br> <li>Banco<br>
+          Policiais em serviço (mínimo): 4<br>
+          
+          Criminosos (mínimo): 4<br>
+          
+          Criminosos (máximo): 6<br><br>
+          
+          Roubo a Residência<br>
+          Policiais em serviço (mínimo): 2<br>
+          
+          Criminosos (mínimo): 2<br><br>
+          
+          Joalheria<br>
+          Policiais em serviço (mínimo): 4<br>
+          
+          Criminosos (mínimo): 3<br>
+          
+          Criminosos (máximo): 5<br><br>
+          
+          Roubo de Veículos<br>
+          Policiais em serviço (mínimo): 2<br>
+          
+          Criminosos (mínimo): 1<br><br>
+          
+          Sequestro<br>
+          Policiais em serviço (mínimo): 3<br>
+          
+          Criminosos (mínimo): 2<br><br>
+          
+          Caixa Registradora<br>
+          Policiais em serviço (mínimo): 2<br>
+          
+          Criminosos (mínimo): 1<br><br>
+          
+          Caixas Eletrônicos
+          Policiais em serviço (mínimo): 2<br>
+          
+          Criminosos (mínimo): 1</li><br>
+      </ul>
+    </div>
+
+    <div id="safe" class="section">
+      <h2>🟢 Zonas Seguras</h2>
+      <ul>
+        <li>As chamadas Zonas Seguras (Safe Zones) são áreas previamente delimitadas em que é estritamente proibida a prática de qualquer ação hostil ou criminosa, tais como furtos, assaltos, sequestros, agressões, homicídios, disparos de arma de fogo ou qualquer conduta que comprometa a integridade física e psicológica dos jogadores presentes no local.<br></li>
+        <br> § 1º – Locais oficialmente reconhecidos como Áreas Safe:
+
+        🛡️ Delegacia Estadual (Police Department);<br>
+        
+        🛡️ Delegacia Federal (Sheriff Department);<br>
+        
+        🛡️ Delegacia Móvel (Mobile Command Center);<br>
+        
+        🛡️ Quartel do Corpo de Bombeiros Militar (somente área interna);<br>
+        
+        🛡️ Ambulâncias em atendimento ou baseadas;<br>
+        
+        🛡️ Local de Spawn – River City;<br>
+        
+        🛡️ Local de Spawn – Springfield;<br>
+        
+        🛡️ Departamento de Trânsito (DMV) – apenas o interior do prédio;<br>
+        
+        🛡️ Hospital – apenas área interna;<br>
+        
+        🛡️ Garagens e locais de retirada de veículos – dentro de um raio de 10 metros quadrados;<br>
+        
+        🛡️ Loja de customização de veículos;<br>
+        
+        🛡️ Qualquer área sob posse oficial do Governo Municipal ou da Equipe Administrativa (STAFF).
+      </ul>
+    </div>
+
+    <div id="conceitos" class="section">
+      <h2>📚 Regras Institucionais da Polícia</h2>
+      <ul>
+        <li>É terminantemente proibido o uso de game pass de customização em viaturas, salvo nos casos de viaturas descaracterizadas. Nesses casos, é permitido apenas a substituição do giroflex ou a remoção de proteções frontais (mata-cachorro).</li>
+        <li>Indivíduos sob custódia deverão ser apresentados exclusivamente a agentes ou delegados da Polícia Civil. Em ausência de servidores da PC, é obrigatório o preenchimento de Boletim de Ocorrência Institucional no canal designado: <a href="https://adminsitracao-rp.github.io/sistema-boletins-ssp-rjr/" target="_blank">💻・ssp-boletins</a></li>
+        <li>É vedado o uso de coletes e equipamentos oriundos da game pass S.W.A.T, sendo permitido exclusivamente o uso dos veículos correspondentes.</li>
+        <li>Todos os membros das instituições policiais devem manter conduta respeitosa com colegas e com a comunidade em geral.</li>
+        <li>O uso do PIT está terminantemente proibido, considerando que a técnica é oriunda da legislação americana e não condiz com a realidade brasileira.</li>
+        <li>É permitido o uso de viaturas para cerco tático, desde que estejam imobilizadas. É proibido utilizar a viatura em movimento ou projetá-la contra o foragido.</li>
+        <li>As unidades especializadas só deverão ser acionadas conforme a necessidade:
+          <br>
+          SPEED (Dodge): acionada quando as viaturas convencionais não acompanham o suspeito. Após a prisão, deve-se retornar ao QTX.
+          <br>
+          TÁTICA: acionada em situações de alto risco (sequestros, operações complexas).</li>
+        <li>Uso restrito a unidades investigativas (PC e PF). Agentes com tais viaturas devem se identificar a outras autoridades. O uso indevido será punido administrativa e institucionalmente.</li>
+        <li>Concedido apenas pela Polícia Federal ou Judiciário Federal. Uma vez aprovado, será registrado no RG do portador.</li>
+        <li>Só poderá ser acionado após 5 minutos de acompanhamento ou em casos de fuga com veículo de alta performance.</li>
+        <li>É proibido o uso dos seguintes itens:
+          <br>
+          Valor Lightbar
+          <br>
+          ALPR
+          <br>
+          Grapper
+          <br>
+          Corredores (Giroflex)</li>
+        <li>Cerco com Spike;
+          Uso liberado para todas as corporações.</li>
+        <li>A corrupção é terminantemente proibida, exceto em narrativas de modo histórico. Casos confirmados resultarão em banimento e exclusão das corporações.</li>
+   
+      </ul>
+    </div>
+
+    <div id="economia" class="section">
+      <h2>💰 Regras Economia</h2>
+      <ul>
+        <li>
+           É expressamente proibido que membros de corporações (polícia, governo ou serviços públicos) utilizem o comando <code>!rob</code>, ainda que estejam logados com personagens de facções ou civis ilegais.
+        </li>
+        
+        <li>
+           O uso do comando <code>!work</code> está autorizado exclusivamente quando o jogador estiver executando alguma atividade dentro do jogo, como lixeiro, cafeteiro, entregador, entre outros serviços. Caso o comando seja utilizado sem que o jogador esteja efetivamente em serviço, e a infração for constatada pela equipe administrativa, será aplicada penalidade de advertência, além da remoção do valor recebido em dobro.
+        </li>
+      
+        <li>
+           É terminantemente proibido o uso de contas alternativas (fakes) com o objetivo de farmar dinheiro ou obter vantagens econômicas. Apenas contas empresariais autorizadas pela administração estão isentas desta proibição.
+        </li>
+      
+        <li>
+
+           É proibido utilizar o comando <code>!rob</code> contra outro jogador sem que esteja nas proximidades da vítima ou sem a devida ação interpretativa (RP) de roubo. Toda ação deve conter contexto e coerência narrativa.
+        </li>
+      
+        <li>
+           Durante roubos a jogadores, é obrigatório o uso de bom senso. Embora a vítima possua determinado saldo bancário (ex: R$ 30.000,00), é necessário considerar a origem do valor. Por exemplo, se o personagem roubado possui salário de R$ 5.000,00, o restante poderá ser de outros personagens, o que descaracteriza o roubo integral. <br>
+           Jogadores que forem vítimas de roubo e utilizarem mecanismos para ocultar o valor verdadeiro com o intuito de evitar prejuízos financeiros poderão receber advertência por má-fé ou manipulação do sistema.
+      </ul>
+    </div>
+
+    <div id="exoticos" class="section">
+      <h2>🚖 Veículos Exóticos</h2>
+      <ul>
+        <li>
+          Veículos exóticos são proibidos para qualquer ação criminosa ou ilegal dentro do Roleplay. O uso indevido resultará em sanções administrativas, independentemente do contexto ou personagem utilizado.
+        </li>
+      
+        <li>
+           Lista oficial de veículos classificados como exóticos e, portanto, restritos a atividades legais:
+          <br><br>
+          Veículos:<br>
+          ➥ 🛑 Strugatti Ettore<br>
+          ➥ 🛑 Surrey 650S<br>
+          ➥ 🛑 Averon R8<br>
+          ➥ 🛑 Falco Heritage<br>
+          ➥ 🛑 Takeo Experience<br>
+          ➥ 🛑 Chevlon Corbeta<br>
+          ➥ 🛑 Vellfire Pioneer<br>
+          ➥ 🛑 Navara Horizon<br>
+          ➥ 🛑 Ferdinand Japaleno Turbo<br>
+          ➥ 🛑 Bullhorn Widebody<br>
+          ➥ 🛑 Bullhorn Determinator SFP Fury<br>
+          ➥ 🛑 Bullhorn Determinator<br>
+          ➥ 🛑 BKM Risen Roadster
+          <br><br>
+          Elétricos:<br>
+          ➥ 🛑 BKM Risen Roadster<br>
+          ➥ 🛑 Celestial Type-6
+          <br><br>
+          Quadriciclos:<br>
+          ➥ 🛑 4-Wheeler (ATV)<br>
+          ➥ 🛑 Canyon Descender (UTV)
+        </li>
+      </ul>
+    </div>
+
+    <div id="penalidades" class="section">
+      <h2>⚖️ Penalidades</h2>
+      <ul>
+        <li> <p>        𝐓𝐀𝐁𝐄𝐋𝐀 𝐃𝐄 𝐏𝐔𝐍𝐈𝐂̧𝐎̃𝐄𝐒: <br>
+          ⬜ Banimento Permanente <br>
+          🟥 Banimento de 25 dias <br>
+          🟥 Banimento de 14 dias <br>
+          🟥 Banimento de 7 dias <br> 
+          🟧 Banimento de 3 dias <br>
+          🟧 Banimento de 24 horas <br>
+          🟧 Banimento de 3 horas <br>
+          🟩 Advertência Verbal <br>
+          🟩 Aviso Verbal <br> </p></li>
+
+      </ul>
+    </div>
+
+    <footer>
+      © 2025 Rio de Janeiro RP • Todos os direitos reservados.
+    </footer>
+  </div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      const buttons = document.querySelectorAll('.sidebar button');
+
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
